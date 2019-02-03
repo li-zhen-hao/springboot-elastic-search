@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,9 +27,13 @@ public class SpringbootElasticSearchApplicationTests {
     private BookRepository bookRepository;
     @Test
     public void book(){
-        Book book=Book.builder().id(1).name("西游记").author("吴承恩").build();
-        System.out.println(book);
-        bookRepository.index(book);
+//        Book book=Book.builder().id(2).name("北游记").author("北承恩").build();
+//        bookRepository.index(book);
+
+        for (Book book1 : bookRepository.findBookByNameIsLike("游")) {
+            System.out.println(book1);
+        }
+
     }
 
     @Test
